@@ -55,7 +55,7 @@ function validateStudentBody(payload) {
     isFormValid = false;
     errors.password = 'Please provide your password';
   }
-  if (!payload || typeof payload.status !== 'boolean' || payload.status.trim().length === 0) {
+  if (!payload || typeof payload.status !== 'boolean') {
     isFormValid = false;
     errors.status = 'Please provide your status';
   }
