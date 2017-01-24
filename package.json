@@ -9,7 +9,10 @@
     "lint": "tslint \"src/**/*.ts\" --project src/tsconfig.json --type-check && tslint \"e2e/**/*.ts\" --project e2e/tsconfig.json --type-check",
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "server": "node server.js",
+    "sequelizeinit": "node_modules/.bin/sequelize init",
+    "migration": "node_modules/.bin/sequelize db:migrate"
   },
   "private": true,
   "dependencies": {
@@ -24,7 +27,9 @@
     "body-parser": "^1.16.0",
     "core-js": "^2.4.1",
     "express": "^4.14.0",
+    "mysql": "^2.13.0",
     "rxjs": "^5.0.1",
+    "sequelize-cli": "^2.5.1",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.7.2"
   },
