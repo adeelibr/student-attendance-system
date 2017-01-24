@@ -59,23 +59,19 @@ function validateStudentBody(payload) {
     isFormValid = false;
     errors.status = 'Please provide your status';
   }
-  if (!payload || typeof payload.teacher_id !== 'number' || payload.teacher_id.trim().length === 0) {
+  if (!payload || typeof payload.teacher_id !== 'number') {
     isFormValid = false;
     errors.teacher_id = 'Please provide your teacher id';
   }
-  if (!payload || typeof payload.location_id !== 'number' || payload.location_id.trim().length === 0) {
+  if (!payload || typeof payload.location_id !== 'number') {
     isFormValid = false;
     errors.location_id = 'Please provide your location id';
   }
-  if (!payload || typeof payload.location_id !== 'number' || payload.location_id.trim().length === 0) {
-    isFormValid = false;
-    errors.location_id = 'Please provide your location id';
-  }
-  if (!payload || typeof payload.parent_id !== 'number' || payload.parent_id.trim().length === 0) {
+  if (!payload || typeof payload.parent_id !== 'number') {
     isFormValid = false;
     errors.parent_id = 'Please provide your parent id';
   }
-  if (!payload || typeof payload.class_id !== 'number' || payload.class_id.trim().length === 0) {
+  if (!payload || typeof payload.class_id !== 'number') {
     isFormValid = false;
     errors.class_id = 'Please provide your class id';
   }
