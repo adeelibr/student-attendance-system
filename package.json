@@ -30,6 +30,7 @@
     "morgan": "^1.7.0",
     "mysql": "^2.13.0",
     "rxjs": "^5.0.1",
+    "sequelize": "^3.30.0",
     "sequelize-cli": "^2.5.1",
     "ts-helpers": "^1.1.1",
     "validator": "^6.2.1",
