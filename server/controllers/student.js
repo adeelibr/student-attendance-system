@@ -14,15 +14,81 @@ module.exports = {
         errors: validateResult.errors
       }).end();
     }
+
+    Students.create(req.body)
+    .then((data) => {
+      if (!data) {
+				res.status(400).send({ 
+          success: false, message: 'Student was not created.' 
+        });
+			} else if (data) {
+        return res.status(200).json({ 
+          success: true, message: 'Succesfully created account', student: data 
+        }).end();
+      }
+    })
+    .catch((err) => {
+			return res.status(500).json({ success: false, message: "Internal Server Error" }).end();
+		});
+
   },
 
-  get: function (req, res, next) {
-    return res.status(200).json({
-      success: true,
-      message: 'All Users',
-      data: [],
-    });
-  }
+  getAll: function (req, res, next) {
+    Students.findAll({})
+		.then((students) => {
+			if(students === null) {
+				return res.status(400).json({ success: false, message: "No Student(s) Exist" }).end();
+			}
+			return res.status(200).json({ success: true, students }).end();
+		});
+  },
+
+  getById: function (req, res, next) {
+    var id = req.params.id;
+		if (!id) {
+			return res.status(400).json({ success: false, message: "Parameter is missing" }).end();
+		}
+
+		Students.findOne({
+			where: { id : id }
+		})
+		.then((student) => {
+			if(student === null) {
+				return res.status(400).json({ success: false, message: "No student Found" }).end();
+			}
+			return res.status(200).json({ success: true, student }).end();
+		})
+		.catch(function(err) {
+			console.log(err);
+			return res.status(500).json({ success: false, message: "Internal Server Error" }).end();
+		})
+  },
+
+  updateStudent: function (req, res, next) {
+    const validateResult = validateStudentBody(req.body);
+    if (!validateResult.success) {
+      return res.status(400).json({
+        success: false,
+        message: validateResult.message,
+        errors: validateResult.errors
+      }).end();
+    }
+
+    let student = req.body;
+		let id = req.params.id;
+
+		Students.update(student, { where: { id: id } })
+		.then((data) => {
+			return Students.findOne({ where: { id : id } });
+		})
+		.then((data) => {
+			return res.status(200).json({ success: true, message: 'Succesfully updated account', student: data }).end();
+		})
+		.catch((error) => {
+			console.log(err);
+			return res.status(500).json({ success: false, message: "Internal Server Error" }).end();
+		})
+  },
 
 };
 
@@ -94,3 +160,4 @@ function validateStudentBody(payload) {
     errors
   }
 }
+

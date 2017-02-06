@@ -3,13 +3,10 @@ const router = express.Router();
 
 const stdFunc = require('../controllers/student');
 
-/* GET api listing. */
-router.get('/', (req, res) => {
-  res.send('api works');
-});
-
 router
-  .post('/', stdFunc.create)
-  .get('/all', stdFunc.get);
+  .post('/',   stdFunc.create)
+  .get('/',    stdFunc.getAll)
+  .get('/:id', stdFunc.getById)
+  .put('/:id', stdFunc.updateStudent);
 
 module.exports = router;
