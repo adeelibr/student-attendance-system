@@ -8,6 +8,8 @@ router.get('/', (req, res) => {
   res.send('api works');
 });
 
-router.post('/', stdFunc.create);
+router
+  .post('/', stdFunc.create)
+  .get('/all', stdFunc.get);
 
 module.exports = router;

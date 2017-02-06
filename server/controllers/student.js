@@ -16,6 +16,14 @@ module.exports = {
     }
   },
 
+  get: function (req, res, next) {
+    return res.status(200).json({
+      success: true,
+      message: 'All Users',
+      data: [],
+    });
+  }
+
 };
 
 function validateStudentBody(payload) {
