@@ -3,8 +3,10 @@ const router = express.Router();
 
 // Get our API routes
 const student = require('./student');
+const teacher = require('./teacher');
 
-// Set our api/student routes
-router.use('/student', student);
+router
+    .use('/student', student)
+    .use('/teacher', teacher);
 
 module.exports = router;
