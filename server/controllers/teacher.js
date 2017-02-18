@@ -28,67 +28,67 @@ module.exports = {
             }
         })
         .catch((err) => {
-			return res.status(500).json({ success: false, message: "Internal Server Error" }).end();
-		});
+			    return res.status(500).json({ success: false, message: "Internal Server Error" }).end();
+		    });
     },
 
     getAll: function(req, res, next) {
-        Teachers.findAll({})
-		.then((teachers) => {
-			if(teachers === null) {
-				return res.status(400).json({ success: false, message: "No Teachers(s) Exist" }).end();
-			}
-			return res.status(200).json({ success: true, teachers }).end();
-		});
+      Teachers.findAll({})
+      .then((teachers) => {
+        if(teachers === null) {
+          return res.status(400).json({ success: false, message: "No Teachers(s) Exist" }).end();
+        }
+        return res.status(200).json({ success: true, teachers }).end();
+      });
     },
 
     getById: function (req, res, next) {
-        var id = req.params.id;
-		if (!id) {
-			return res.status(400).json({ success: false, message: "Parameter is missing" }).end();
-		}
+      var id = req.params.id;
+      if (!id) {
+        return res.status(400).json({ success: false, message: "Parameter is missing" }).end();
+      }
 
-		Teachers.findOne({
-			where: { id : id }
-		})
-		.then((teacher) => {
-			if(teacher === null) {
-				return res.status(400).json({ success: false, message: "No teacher Found" }).end();
-			}
-			return res.status(200).json({ success: true, teacher }).end();
-		})
-		.catch(function(err) {
-			console.log(err);
-			return res.status(500).json({ success: false, message: "Internal Server Error" }).end();
-		})
+      Teachers.findOne({
+        where: { id : id }
+      })
+      .then((teacher) => {
+        if(teacher === null) {
+          return res.status(400).json({ success: false, message: "No teacher Found" }).end();
+        }
+        return res.status(200).json({ success: true, teacher }).end();
+      })
+      .catch(function(err) {
+        console.log(err);
+        return res.status(500).json({ success: false, message: "Internal Server Error" }).end();
+      })
     },
 
     updateTeacher: function (req, res, next) {
-        const validateResult = validateTeacherBody(req.body);
-        if (!validateResult.success) {
-        return res.status(400).json({
-            success: false,
-            message: validateResult.message,
-            errors: validateResult.errors
-        }).end();
-        }
+      const validateResult = validateTeacherBody(req.body);
+      if (!validateResult.success) {
+      return res.status(400).json({
+          success: false,
+          message: validateResult.message,
+          errors: validateResult.errors
+      }).end();
+      }
 
-        let teacher = req.body;
-		let id = req.params.id;
+      let teacher = req.body;
+      let id = req.params.id;
 
-		Teachers.update(teacher, { where: { id: id } })
-		.then((data) => {
-			return Teachers.findOne({ where: { id : id } });
-		})
-		.then((data) => {
-			return res.status(200).json({ 
-                success: true, message: 'Succesfully updated account', teacher: data 
-            }).end();
-		})
-		.catch((error) => {
-			console.log(err);
-			return res.status(500).json({ success: false, message: "Internal Server Error" }).end();
-		})
+      Teachers.update(teacher, { where: { id: id } })
+      .then((data) => {
+        return Teachers.findOne({ where: { id : id } });
+      })
+      .then((data) => {
+        return res.status(200).json({ 
+                  success: true, message: 'Succesfully updated account', teacher: data 
+              }).end();
+      })
+      .catch((error) => {
+        console.log(err);
+        return res.status(500).json({ success: false, message: "Internal Server Error" }).end();
+      })
     },
 };
 
