@@ -5,12 +5,18 @@ import { HttpModule } from '@angular/http';
 
 import { routes } from './app.router';
 
+// Layouts
+import { AppComponent } from './app.component';
 import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { PublicComponent } from './layouts/public/public.component';
-import { AppComponent } from './app.component';
+
+// Pages
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { StudentsComponent } from './pages/students/students.component';
+
+// Services
+import { StudentsService } from './services/students.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +33,9 @@ import { StudentsComponent } from './pages/students/students.component';
     HttpModule,
     routes
   ],
-  providers: [],
+  providers: [
+    StudentsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
