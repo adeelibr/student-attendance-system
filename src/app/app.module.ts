@@ -17,11 +17,13 @@ import { StudentsComponent } from './pages/students/students.component';
 
 // Services
 import { StudentsService } from './services/students.service';
+import { DashboardSidebarComponent } from './layouts/components/dashboard-sidebar/dashboard-sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
+    DashboardSidebarComponent,
     PublicComponent,
     LoginComponent,
     HomeComponent,

@@ -1,0 +1,44 @@
+<div class="nav-side-menu">
+  <div class="nav-brand">
+    <a href="index.php">
+      <img src="assets/logo.png" class="img-responsive center-block" style="width: 130px;"/>
+    </a>
+    <!--<p>SAS</p>-->
+  </div>
+
+  <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+    <div class="menu-list">
+      <ul id="menu-content" class="menu-content collapse out">
+
+        <li data-toggle="collapse" data-target="#order" class="collapsed">
+          <a><i class="fa fa-compass fa-lg"></i> Teachers <span class="arrow"></span></a>
+        </li>
+        <ul class="sub-menu collapse" id="order">
+            <li><a href="orders.php"><i class="fa fa-first-order fa-lg"></i> View All</a> </li>
+            <li><a href="add_order.php"><i class="fa fa-plus-square fa-lg"></i> Add Teacher</a> </li>
+        </ul>
+
+        <li data-toggle="collapse" data-target="#client" class="collapsed">
+          <a><i class="fa fa-address-card fa-lg"></i> Students <span class="arrow"></span></a>
+        </li>
+        <ul class="sub-menu collapse" id="client">
+            <li><a href="client.php"><i class="fa fa-binoculars fa-lg"></i> View All</a> </li>
+            <li><a href="add_client.php"><i class="fa fa-address-book fa-lg"></i> Add Students</a> </li>
+            <!-- <li><a href="#"><i class="fa fa-pencil-square-o fa-lg"></i> Edit Profile</a> </li> -->
+        </ul>
+
+        <li data-toggle="collapse" data-target="#admin" class="collapsed">
+          <a><i class="fa fa-user-secret fa-lg"></i> Classes <span class="arrow"></span></a>
+        </li>
+        <ul class="sub-menu collapse" id="admin">
+            <li><a href="admin.php"><i class="fa fa-users fa-lg"></i> View All Admins</a> </li>
+            <li><a href="add_admin.php"><i class="fa fa-user-plus fa-lg"></i> New Admin</a> </li>
+            <!-- <li><a href="#"><i class="fa fa-pencil-square-o fa-lg"></i> Edit Profile</a> </li> -->
+        </ul>
+
+				<li> <a href="signout.php"><i class="fa fa-sign-out fa-lg"></i> Sign Out</a> </li>
+
+      </ul>
+   </div>
+</div> <!-- end of verical navigation -->
