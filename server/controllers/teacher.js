@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt-nodejs');
 const validator = require('validator');
 
 const models = require('../models');
@@ -14,8 +15,12 @@ module.exports = {
                 errors: validateResult.errors
             }).end();
         }
+        
+        // hash password
+        let payload = req.body;
+        payload.password = bcrypt.hashSync(payload.password);
 
-        Teachers.create(req.body)
+        Teachers.create(payload)
         .then((data) => {
             if (!data) {
                 res.status(400).send({ 

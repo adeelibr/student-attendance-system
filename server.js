@@ -6,15 +6,18 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+const config = require('./server/config');
+
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
 // Logger
 app.use(morgan('dev'));
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
+
+app.set('superSecret', config.secret);
 
 // Get our API routes
 const index = require('./server/routes/');

@@ -24,11 +24,13 @@
     "@angular/platform-browser": "^2.3.1",
     "@angular/platform-browser-dynamic": "^2.3.1",
     "@angular/router": "^3.3.1",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.16.0",
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
     "express": "^4.14.0",
     "font-awesome": "^4.7.0",
+    "jsonwebtoken": "^7.3.0",
     "morgan": "^1.7.0",
     "mysql": "^2.13.0",
     "rxjs": "^5.0.1",
@@ -36,7 +38,7 @@
     "sequelize-cli": "^2.5.1",
     "tether": "^1.4.0",
     "ts-helpers": "^1.1.1",
-    "validator": "^6.2.1",
+    "validator": "^6.3.0",
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
