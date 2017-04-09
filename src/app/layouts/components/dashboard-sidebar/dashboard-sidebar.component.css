@@ -2,7 +2,7 @@
 	overflow: auto;
 	position: fixed;
 	left: 0;
-	width: inherit;
+	width: 200px;
 	height: 100%;
 	color: #fff;
 	background-color: #111111;
