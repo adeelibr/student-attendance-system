@@ -3,20 +3,46 @@
   <div class="col-sm-5 margin"> 
     <h1 class="display-3 text-center">Admin Area</h1>
     <hr />
-    <form>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Username</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" 
+    
+    <div class="alert alert-success" role="alert" *ngIf="success">
+      <strong>Success!</strong> Please wait while we log you in.
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="error && !success">
+      <strong>Oops!</strong> {{ error }}
+    </div>
+
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">  
+      <div 
+        class="form-group"
+        [ngClass]="{'has-danger': !myForm.controls['username'].valid && myForm.controls['username'].dirty}"
+      >
+        <label for="username">Username</label>
+        <input 
+          type="text" 
+          class="form-control"
+          [ngClass]="{'form-control-danger': !myForm.controls['username'].valid}"
+          formControlName="username"
+          id="username" 
           aria-describedby="emailHelp" 
           placeholder="Enter username"
         >
         <small id="emailHelp" class="form-text text-muted">Kindly provide your username.</small>
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <div 
+        class="form-group"
+        [ngClass]="{'has-danger': !myForm.controls['password'].valid && myForm.controls['password'].dirty}"
+      >
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          class="form-control"
+          [ngClass]="{'form-control-danger': !myForm.controls['password'].valid}"
+          formControlName="password"
+          id="password" 
+          placeholder="Password"
+        >
       </div>
-      <button type="submit" class="btn btn-outline-info btn-block">Submit</button>
+      <button type="submit" class="btn btn-outline-info btn-block" [disabled]="!myForm.valid">Submit</button>
     </form>
   </div>
   <div class="col"></div>

@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const http = require('http');
+const cors = require('cors')
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
@@ -8,6 +9,8 @@ const app = express();
 
 const config = require('./server/config');
 
+// Enable CORs
+app.use(cors());
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

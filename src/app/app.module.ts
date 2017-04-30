@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { routes } from './app.router';
@@ -17,6 +17,9 @@ import { StudentsComponent } from './pages/students/students.component';
 
 // Services
 import { StudentsService } from './services/students.service';
+import { AuthService } from './services/auth.service';
+
+// Components
 import { DashboardSidebarComponent } from './layouts/components/dashboard-sidebar/dashboard-sidebar.component';
 
 @NgModule({
@@ -32,11 +35,13 @@ import { DashboardSidebarComponent } from './layouts/components/dashboard-sideba
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     routes
   ],
   providers: [
-    StudentsService
+    StudentsService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
